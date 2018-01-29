@@ -2,7 +2,17 @@ import axios from 'axios'
 
 export default {
   reqHistory(){
-    return axios.post('http://route.showapi.com/119-42',"showapi_timestamp="+formatterDateTime()+"&showapi_appid=55199&showapi_sign=679fd230363649848a0d62c60c4686a6")
+    return axios.post('http://route.showapi.com/119-42',"showapi_timestamp="+formatterDateTime()+
+      "&showapi_appid=55199&showapi_sign=679fd230363649848a0d62c60c4686a6")
+  },
+  reqRiddleType(){
+    return axios.post('http://route.showapi.com/151-3',"showapi_timestamp="+formatterDateTime()+
+      "&showapi_appid=55199&showapi_sign=679fd230363649848a0d62c60c4686a6")
+  },
+  reqRiddle(id){
+    console.log(id)
+    return axios.post('http://route.showapi.com/151-4',"showapi_timestamp="+formatterDateTime()+
+      "&showapi_appid=55199&showapi_sign=679fd230363649848a0d62c60c4686a6&typeId="+id+"&page=1")
   }
 }
 

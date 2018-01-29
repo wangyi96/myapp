@@ -1,3 +1,5 @@
 export default{
-  historyDay:{}
+  historyDay:{},
+  riddleType:{},
+  riddles:{},
 }
