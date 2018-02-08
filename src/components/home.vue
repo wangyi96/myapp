@@ -41,7 +41,7 @@
       </div>
 
       <h1 class="text">历史上的今天</h1>
-      <span class="dayText" v-if="historyDay.list">{{historyDay.list[0].year}}年{{historyDay.list[0].month}}月{{historyDay.list[0].day}}日</span>
+      <span class="dayText" v-if="historyDay.list">{{new Date().getFullYear()}}年{{new Date().getMonth() + 1}}月{{new Date().getDate()}}日</span>
       <div class="historyDay" v-for="(item,index) in historyDay.list">
         <h2>{{index+1}}、{{item.title}} ({{item.year}})</h2>
         <div class="history_img">

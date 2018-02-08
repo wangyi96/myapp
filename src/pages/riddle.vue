@@ -44,8 +44,8 @@
           typeId:'gxmy',
           lastpage:0,
           nowpage:1,
-          answer:false,
-          answerId:0
+          answerId:0,
+          isShow:true
         }
       },
       mounted(){
@@ -76,17 +76,23 @@
         reveal(id){
           let dives = document.querySelectorAll('.tab')
           let me = dives[id]
+
+          if(this.isShow && !me.answer){
+            this.isShow = false;
+            me.answer = false
+          }
           if(!me.transform){
-            me.style.transform = this.answer ? "translateZ(0) rotateY(-360deg)":"translateZ(0) rotateY(360deg)"
+            me.style.transform = me.answer ? "translateZ(0) rotateY(-360deg)":"translateZ(0) rotateY(360deg)"
             let spans = me.children
-            if(!this.answer){
+
+            if(!me.answer){
               spans[0].style.display = "none"
               spans[1].style.display = "block"
             }else{
               spans[0].style.display = "block"
               spans[1].style.display = "none"
             }
-            this.answer = !this.answer
+            me.answer = !me.answer
           }
         },
         pullingDownUp () {
@@ -130,6 +136,7 @@
           })
         },
         tabChange(id){
+
           this.typeId = id
           api.reqRiddle(id).then(res=>{
             let result = res.data
@@ -162,6 +169,7 @@
           color lightsalmon
         ul
           width 100%
+          background #F0E5AD
           li
             width 100%
             transform: translateZ(0)
@@ -170,7 +178,7 @@
               height 200px
               margin 0 auto
               margin-bottom 10px
-              background lightblue
+              background rgba(0,0,0,.6)
               transform: translateZ(0) rotateY(0)
               transition .5s transform
               text-align center
@@ -181,6 +189,7 @@
                 display block
                 width 80%
                 margin 0 auto
+                color white
     .list
       width 100%
       height 50px
@@ -200,7 +209,7 @@
             float left
             font-size 14px
           .active
-            background lawngreen
+            background beige
     .mint-header
       background-color white
       .mint-header-title
